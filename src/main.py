@@ -66,7 +66,7 @@ class Temperature:
             with open(config_name) as file:
                 data = json.load(file)
             self.wait_time      = data["weather_wait_time"]
-            self.server_address = '{}/sensor/'.format(data["server_address"])
+            self.server_address = '{}/weather/{}'.format(data["server_address"])
             self.factor         = data["temperature_factor"]
             self.send_data = True
         except KeyError:
@@ -110,12 +110,9 @@ class Temperature:
     def publish_data(self):
         '''Send data to server if asked'''
         if self.send_data:
-            data = {
-                'temperature': self.temperature,
-                'humidity': self.bme280.get_humidity()
-            }
+            address = self.server_address + self.temperature,
             try:
-                response = requests.post(self.server_address, json=data, timeout=5)
+                response = requests.post(address, timeout=5)
                 if response.status_code == 200:
                     logging.info("Requests successful")
                 else:
