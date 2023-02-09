@@ -66,7 +66,7 @@ class Temperature:
             with open(config_name) as file:
                 data = json.load(file)
             self.wait_time      = data["weather_wait_time"]
-            self.server_address = '{}/temperature/?temperature='.format(data["server_address"])
+            self.server_address = '{}/temperature?temperature='.format(data["server_address"])
             self.factor         = data["temperature_factor"]
             self.send_data = True
         except KeyError:
