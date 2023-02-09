@@ -110,7 +110,7 @@ class Temperature:
     def publish_data(self):
         '''Send data to server if asked'''
         if self.send_data:
-            address = self.server_address + self.temperature
+            address = self.server_address + str(self.temperature)
             try:
                 logging.info(address)
                 response = requests.post(address, timeout=5)
