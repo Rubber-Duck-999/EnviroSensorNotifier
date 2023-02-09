@@ -113,6 +113,7 @@ class Temperature:
             address = self.server_address + '{}'
             address = address.format(self.temperature)
             try:
+                logging.info(address)
                 response = requests.post(address, timeout=5)
                 if response.status_code == 200:
                     logging.info("Requests successful")
