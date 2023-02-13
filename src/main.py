@@ -15,27 +15,8 @@ except ImportError:
 import requests
 import utilities
 
-filename = '/home/{}/sync/EnviroSensorNotifier.log'
-
-try:
-    name = utilities.get_user()
-    filename = filename.format(name)
-    os.remove(filename)
-except OSError as error:
-    pass
-
-
-
-# Add the log message handler to the logger
-logging.basicConfig(filename=filename,
-                    format='%(asctime)s - %(levelname)s - %(message)s', 
-                    level=logging.INFO)
-
-logging.info("Starting program")
-
 class FileNotFound(Exception):
     '''Exception class for file checking'''
-
 
 class Temperature:
     '''Class for managing system and node temp'''
@@ -133,5 +114,17 @@ class Temperature:
             time.sleep(60 * self.wait_time)
 
 if __name__ == "__main__":
+    filename = '/home/{}/sync/EnviroSensorNotifier.log'
+    try:
+        name = utilities.get_user()
+        filename = filename.format(name)
+        os.remove(filename)
+    except OSError as error:
+        pass
+    # Add the log message handler to the logger
+    logging.basicConfig(filename=filename,
+                        format='%(asctime)s - %(levelname)s - %(message)s',
+                        level=logging.INFO)
+    logging.info("Starting program")
     temp = Temperature()
     temp.loop()
