@@ -1,5 +1,7 @@
 # EnviroSensorNotifier
 
+[![Pylint](https://github.com/Rubber-Duck-999/EnviroSensorNotifier/actions/workflows/pylint.yaml/badge.svg?branch=main)](https://github.com/Rubber-Duck-999/EnviroSensorNotifier/actions/workflows/pylint.yaml)
+
 Application that uses the Enviro Sensor pHat that sends sensor data
 
 ## Install
