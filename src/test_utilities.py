@@ -1,5 +1,5 @@
-import src.utilities as utilities
+import utilities
 
 def test_utilities():
     user = utilities.get_user()
-    assert user == 'simon'
+    assert user == 'runner'
